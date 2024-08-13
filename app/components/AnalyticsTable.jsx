@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 
-const AnalyticsTable = () => {
+const Home = () => {
   const [visitorInfo, setVisitorInfo] = useState({
     ip: "Loading...",
     isp: "Loading...",
@@ -12,12 +12,7 @@ const AnalyticsTable = () => {
 
   useEffect(() => {
     fetch("/api/visitor")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json();
-      })
+      .then((response) => response.json())
       .then((data) => setVisitorInfo(data))
       .catch((error) => {
         console.error("Error fetching visitor info:", error);
@@ -77,4 +72,4 @@ const AnalyticsTable = () => {
   );
 };
 
-export default AnalyticsTable;
+export default Home;
